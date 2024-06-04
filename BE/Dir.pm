@@ -36,9 +36,9 @@ my %dircache;
 
 sub get_direntries_raw($) {
 	my $d = $_[0];
-	opendir(my $dh, $d);
+
 	my $direntries;
-	if (defined $dh) {
+	if (opendir(my $dh, $d)) {
 		$direntries = [ (readdir($dh)) ];
 		closedir($dh);
 	} else {
